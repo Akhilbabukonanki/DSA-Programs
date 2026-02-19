@@ -1,0 +1,91 @@
+public class SingleLL{
+    public class Node{
+        int data;
+        Node next;
+        public Node(int data){
+            this.data=data;
+            this.next=null;
+        }
+    }
+    private Node head;
+    private Node tail;
+    private int size;
+    public void addFirst(int data){
+        Node newNode=new Node(data);
+        size++;
+        if(head==null){
+            head=tail=newNode;
+            return;
+        }
+        newNode.next=head;
+        head=newNode;
+    }
+    public void addlast(int data){
+        Node newNode=new Node(data);
+        size++;
+        if(head==null){
+            head=tail=newNode;
+            return;
+        }
+        tail.next=newNode;
+        tail=newNode;
+    }
+    public int removeFirst(){
+        if(head==null){
+            System.out.println("SLL is Empty");
+            return Integer.MIN_VALUE;
+        }
+        if(size==1){
+            int val=head.data;
+            head=tail=null;
+            size--;
+            return val;
+        }
+        int val=head.data;
+        head=head.next;
+        size--;
+        return val;
+    }
+    public int removeLast(){
+        if(head==null){
+            System.out.println("SLL is Empty");
+            return Integer.MIN_VALUE;
+        }
+        if(size==1){
+            int val=head.data;
+            head=tail=null;
+            size--;
+            return val;
+        }
+        Node prev=head;
+        while(prev.next!=tail){
+            prev=prev.next;
+        }
+        int val=tail.data;
+        prev.next=null;
+        tail=prev;
+        size--;
+        return val;
+    }
+    public void print(){
+        Node tmp=head;
+        while(tmp!=null){
+            System.out.print(tmp.data+"->");
+            tmp=tmp.next;
+        }
+        System.out.println("null");
+    }
+    public static void main(String[] args){
+        SingleLL sll=new SingleLL();
+        sll.addFirst(1);
+        sll.addlast(3);
+        sll.addlast(2);
+        sll.print();
+        sll.removeFirst();
+        sll.removeLast();
+        sll.removeLast();
+        sll.removeLast();
+        sll.print();
+
+    }
+}
