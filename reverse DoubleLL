@@ -1,0 +1,13 @@
+public Node reverse(Node head){
+        Node curr=head;
+        Node p=null;
+        Node next;
+        while(curr!=null){
+            next=curr.next;
+            curr.next=p;
+            curr.prev=next;
+            p=curr;
+            curr=next;
+        }
+        return p;
+    }
