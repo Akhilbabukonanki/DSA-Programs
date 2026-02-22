@@ -1,5 +1,10 @@
 import java.util.ArrayList;
 public class Classroom{
+    public static void swap(ArrayList<Integer> list,int idx1,int idx2){
+        int tmp=list.get(idx1);
+        list.set(idx1,list.get(idx2));
+        list.set(idx2,tmp);
+    }
     public static void main(String args[]){
         ArrayList<Integer> list=new ArrayList<>();
         list.add(1);
@@ -9,6 +14,7 @@ public class Classroom{
         list.add(9);
         list.remove(3);
         list.set(2,2);
+        System.out.println(list);
         int max=Integer.MIN_VALUE;
         for(int i=0;i<list.size();i++){
             if(max<list.get(i)){
@@ -16,6 +22,9 @@ public class Classroom{
             }
         }
         System.out.println(max);
+        int idx1=1,idx2=3;
+        swap(list,idx1,idx2);
+        System.out.println(list);
 
     }
 }
