@@ -1,0 +1,33 @@
+import java.util.*;
+
+class Solution {
+    public int maximumUnits(int[][] boxTypes, int truckSize) {
+        Arrays.sort(boxTypes, (a, b) -> b[1] - a[1]);
+        int maxsum = 0;
+        for (int[] box : boxTypes) {
+            if (box[0] <= truckSize) {
+                maxsum += box[0] * box[1];
+                truckSize -= box[0];
+            } else {
+                maxsum += truckSize * box[1];
+                break;
+            }
+        }
+
+        return maxsum;
+    }
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int type = sc.nextInt();
+        int[][] boxtypes = new int[type][2];
+        for (int i = 0; i < type; i++) {
+            for (int j = 0; j < 2; j++) {
+                boxtypes[i][j] = sc.nextInt();
+            }
+        }
+        int trucksize = sc.nextInt();
+        Solution sol = new Solution();
+        int output = sol.maximumUnits(boxtypes, trucksize);
+        System.out.println(output);
+    }
+}
