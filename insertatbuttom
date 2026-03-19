@@ -1,0 +1,24 @@
+import java.util.*;
+class Classroom{
+    public static void main(String[] args){
+        Scanner sc=new Scanner(System.in);
+        Stack<Integer> stack=new Stack<>();
+        stack.push(1);
+        stack.push(2);
+        stack.push(3);
+        int k=sc.nextInt();
+        insertatbuttom(stack,k);
+        while(!stack.isEmpty()){
+            System.out.println(stack.pop());
+        }
+    }
+    public static void insertatbuttom(Stack<Integer> stack,int k){
+        if(stack.isEmpty()){
+            stack.push(k);
+            return;
+        }
+        int top=stack.pop();
+        insertatbuttom(stack,k);
+        stack.push(top);
+    }
+}
